@@ -56,7 +56,7 @@ char getChar() {
 
 // Returning array with specific size
 int* createArray(int size) {
-	int* array = (int*) malloc(size * sizeof(int));
+	int* array = malloc(size * sizeof(int));
 
 	for (int i = 0; i < size; i++) {
 		array[i] = 0;
@@ -78,18 +78,19 @@ void shuffleArray(int* array, int size) {
 	}
 }
 
+
 // Creating an array with specific size and randomizing it
-int* createRandArray(int var_size) {
-	int* array = (int*) malloc(var_size * sizeof(int));
+int* createRandArray(int size) {
+	int* array = malloc(size * sizeof(int));
 	int j = 0, temp = 0;
 	
 	// Creating array with ordered set numbers
-	for (int i = 0; i < var_size; i++) {
+	for (int i = 0; i < size; i++) {
 		array[i] = i;
 	}
 
 	// Shuffle array
-	for (int i = var_size - 1; i >= 0; i--) {
+	for (int i = size - 1; i >= 0; i--) {
 		j = rand() % (i + 1);
 		temp = array[j];
 		array[j] = array[i];
@@ -112,22 +113,13 @@ void printArray(int* array, int size) {
 	printf("]\n");
 }
 
-// Fill 2D Matrix with 0
-void zeroMatrix(int** array, int size) {
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-			array[i][j] = 0;
-		}
-	}
-}
-
 /**************
  *** Matrix ***
  **************/
 
 // Create n-by-n matrix
 int* create2DMatrix(int n) {
-	int* array = (int*)malloc(n * sizeof(int));
+	int* array = malloc(n * sizeof(int));
 
 	if (!array) {
 		printf("Error while allocating memory. NULL pointer returned\n");
@@ -138,13 +130,22 @@ int* create2DMatrix(int n) {
 		return array;
 	}
 }
+
+// Fill 2D Matrix with 0
+void zeroMatrix(int** array, int size) {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			array[i][j] = 0;
+		}
+	}
+}
  
 // Create a custom sized 2D Matrix
 int** createCustom2DMatrix(int n, int m) {
-	int** array = (int**)malloc(n * sizeof(int*));
+	int** array = malloc(n * sizeof(int*));
 
 	for (int i = 0; i < n; i++) {
-		array[i] = (int*)malloc(n * sizeof(int));
+		array[i] = malloc(n * sizeof(int));
 	}
 
 	if (!array) {
