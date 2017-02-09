@@ -27,7 +27,7 @@ int string(char *s, int maxlen) {
 		s[--len] = '\0'; // remove line break
 
 	return len; 
-} 
+}
 
 // Input integer
 int getInt() {
@@ -145,7 +145,7 @@ int** createCustom2DMatrix(int n, int m) {
 	int** array = malloc(n * sizeof(int*));
 
 	for (int i = 0; i < n; i++) {
-		array[i] = malloc(n * sizeof(int));
+		array[i] = malloc(m * sizeof(int));
 	}
 
 	if (!array) {
